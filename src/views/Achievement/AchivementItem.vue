@@ -25,8 +25,9 @@
                             </sup>
                         </div>
                     </div>
-                    <small>
+                    <small style="display: flex">
                         <a
+                            ref="contributedLink"
                             :href="contributed[i.id] ? contributed[i.id] : searchMys(i)"
                             target="_blank"
                             class="contributed"
@@ -35,7 +36,9 @@
                             <fa-icon icon="arrow-up-right-from-square" />
                             {{ contributed[i.id] ? '攻略' : '搜索' }}
                         </a>
-                        {{ amos[i.desc].replace('{param0}', i.total.toString()) }}
+                        <div>
+                            <span v-html="formattedText(amos[i.desc].replace('{param0}', i.total.toString()))"></span>
+                        </div>
                     </small>
                 </div>
                 <div v-if="fin" class="right">
@@ -173,6 +176,12 @@ export default defineComponent({
                 } catch (e) {
                     return ''
                 }
+            },
+            formattedText(inputText: string) {
+                return inputText
+                    .replace(/\\n/g, '<br>') // 将换行符替换为 <br>
+                    .replace(/<color=(#[0-9a-fA-F]+)>/g, '<span style="color:$1;">') // 替换 <color> 为 <span>
+                    .replace(/<\/color>/g, '</span>') // 替换 </color> 为 </span>
             },
             updateDate(datestr: string) {
                 const d = datestr.trim()
