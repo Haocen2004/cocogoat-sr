@@ -24,8 +24,6 @@ pnpm-debug.log*
 *.sw?
 .cache
 
-src/generated/
-
 /*.txt
 
 .yarn/cache/*.zip
