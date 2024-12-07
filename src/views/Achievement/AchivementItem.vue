@@ -19,7 +19,7 @@
                             <span class="number">{{ i.reward }}</span>
                         </div>
                         <div class="ntxt" @click="$emit('click-title')">
-                            {{ amos[i.name] }}
+                            {{ formattedText(amos[i.name], []) }}
                             <sup class="version">
                                 {{ version }}
                             </sup>
@@ -37,7 +37,7 @@
                             {{ contributed[i.id] ? '攻略' : '搜索' }}
                         </a>
                         <div>
-                            <span v-html="formattedText(amos[i.desc].replace('{param0}', i.total.toString()))"></span>
+                            <span v-html="formattedText(amos[i.desc], i.params)"></span>
                         </div>
                     </small>
                 </div>
@@ -177,11 +177,23 @@ export default defineComponent({
                     return ''
                 }
             },
-            formattedText(inputText: string) {
-                return inputText
-                    .replace(/\\n/g, '<br>') // 将换行符替换为 <br>
-                    .replace(/<color=(#[0-9a-fA-F]+)>/g, '<span style="color:$1;">') // 替换 <color> 为 <span>
-                    .replace(/<\/color>/g, '</span>') // 替换 </color> 为 </span>
+            formattedText(inputText: string, params: number[]) {
+                let processText = inputText
+                    .replace('{TEXTJOIN#87}', '晖长石号')
+                    .replace('{TEXTJOIN#54}', '次元扑满')
+                    .replace('{NICKNAME}', '开拓者')
+                    .replace(/\\n/g, '<br>')
+                    .replace(/<color=(#[0-9a-fA-F]+)>/g, '<span style="color:$1;">')
+                    .replace(/<\/color>/g, '</span>')
+                    .replace(/<\/unbreak>/g, '')
+                    .replace(/<unbreak>/g, '')
+                    .replace('[i]', '')
+                if (params.length > 0) {
+                    params.forEach((p, i) => {
+                        processText = processText.replace(`#${i + 1}`, p.toString())
+                    })
+                }
+                return processText
             },
             updateDate(datestr: string) {
                 const d = datestr.trim()
@@ -247,29 +259,36 @@ export default defineComponent({
 <style lang="scss" module>
 .achievement-item {
     padding-top: 15px;
+
     &:global(.sub) {
         padding-top: 0;
+
         :global(.single) {
             background: #f0f7ff;
             border-top: 1px solid #d3e8ff;
+
             :global(.dark) & {
                 background: #212426;
                 border-top: 1px solid var(--c-border);
             }
         }
     }
+
     :global {
         .single {
             background: var(--c-white);
             border-radius: 3px;
             color: var(--c-text);
             position: relative;
+
             .detail {
                 padding: 15px;
             }
+
             .partial {
                 background: #f0f7ff;
                 border-top: 1px solid #d3e8ff;
+
                 .partial-badge {
                     height: 19px;
                     border: 1px solid;
@@ -278,6 +297,7 @@ export default defineComponent({
                     box-sizing: border-box;
                     border-radius: 2px;
                 }
+
                 .date {
                     float: right;
                     font-size: 12px;
@@ -285,18 +305,23 @@ export default defineComponent({
                     line-height: 28px;
                     opacity: 0.8;
                 }
+
                 :global(.dark) & {
                     background: #212426;
                     border-top: 1px solid var(--c-border);
                 }
+
                 padding: 5px 23px;
+
                 .partial-item {
                     list-style: none;
                 }
+
                 .partial-item .el-checkbox {
                     height: 28px;
                 }
             }
+
             .badge {
                 position: absolute;
                 top: 0;
@@ -305,6 +330,7 @@ export default defineComponent({
                 width: 35px;
                 height: 35px;
                 pointer-events: none;
+
                 &:after {
                     border-right: 40px solid var(--c-theme);
                     border-bottom: 40px solid var(--c-white);
@@ -315,6 +341,7 @@ export default defineComponent({
                     right: 0;
                     bottom: 0;
                 }
+
                 span {
                     position: relative;
                     z-index: 2;
@@ -325,15 +352,19 @@ export default defineComponent({
                     margin-left: 6px;
                     margin-top: 3px;
                 }
+
                 &.WQ:after {
                     opacity: 0.7;
                 }
+
                 &.IQ:after {
                     border-right-color: #a87bfd;
                 }
+
                 &.AQ:after {
                     border-right-color: #ec6f10;
                 }
+
                 :global(.dark) & {
                     &.AQ:after {
                         border-right-color: #9c5723;
@@ -349,9 +380,11 @@ export default defineComponent({
                 text-overflow: ellipsis;
                 cursor: pointer;
                 transition: all 0.3s;
+
                 &:hover {
                     color: #0079cc;
                 }
+
                 .version {
                     font-size: 12px;
                     color: var(--c-theme);
@@ -359,6 +392,7 @@ export default defineComponent({
                     font-family: genshin;
                 }
             }
+
             small {
                 max-width: calc(100% - 80px);
                 overflow: hidden;
@@ -380,12 +414,14 @@ export default defineComponent({
                     margin-right: 5px;
                     position: relative;
                     top: 2px;
+
                     &:hover {
                         border-color: var(--c-theme);
                         opacity: 0.8;
                     }
                 }
             }
+
             .award {
                 user-select: none;
                 display: inline-block;
@@ -400,10 +436,12 @@ export default defineComponent({
                 width: 55px;
                 text-align: center;
                 border: 1px solid var(--c-theme);
+
                 &.checked {
                     background: var(--c-theme);
                     color: var(--c-white);
                 }
+
                 img {
                     height: 18px;
                     vertical-align: top;
@@ -412,6 +450,7 @@ export default defineComponent({
                     display: inline-block;
                     margin-left: -2px;
                 }
+
                 .number {
                     height: 18px;
                     vertical-align: top;
@@ -425,6 +464,7 @@ export default defineComponent({
                 position: absolute;
                 right: 15px;
                 top: 15px;
+
                 input,
                 .placeholder {
                     appearance: none;
@@ -437,6 +477,7 @@ export default defineComponent({
                     outline: 0;
                     border: 1px solid transparent;
                     border-radius: 3px;
+
                     &:focus,
                     &:hover {
                         border-color: var(--c-theme);
@@ -447,6 +488,7 @@ export default defineComponent({
                     position: relative;
                     font-size: 13px;
                     padding-top: 3px;
+
                     .date-out {
                         position: absolute;
                         right: 0;
@@ -458,9 +500,11 @@ export default defineComponent({
                         opacity: 0;
                     }
                 }
+
                 .status {
                     position: relative;
                     display: inline-block;
+
                     .status-out {
                         position: absolute;
                         top: 0;
@@ -474,6 +518,7 @@ export default defineComponent({
                         padding-right: 6px;
                     }
                 }
+
                 .status-out,
                 .status-in {
                     text-align: center;
@@ -490,6 +535,7 @@ export default defineComponent({
                         line-height: 24px;
                         border: 1px solid transparent;
                     }
+
                     input {
                         font-size: 17px;
                         height: 22px;
@@ -498,12 +544,15 @@ export default defineComponent({
                         font-family: Consolas, monospace;
                         border-top-right-radius: 0;
                         border-bottom-right-radius: 0;
+
                         &:focus,
                         &:hover {
                             border-right-color: transparent;
+
                             & + div {
                                 border-top-color: var(--c-theme);
                                 border-bottom-color: var(--c-theme);
+
                                 & + div {
                                     border-top-color: var(--c-theme);
                                     border-bottom-color: var(--c-theme);
@@ -512,11 +561,13 @@ export default defineComponent({
                             }
                         }
                     }
+
                     .sep {
                         padding-right: 2px;
                         margin-left: -1px;
                         border-left: 0;
                     }
+
                     .total {
                         padding-right: 4px;
                         margin-left: -1px;
@@ -527,16 +578,20 @@ export default defineComponent({
                     }
                 }
             }
+
             .middle {
                 margin-left: 50px;
             }
+
             .name {
                 font-weight: bold;
             }
+
             .desc {
                 color: #888;
                 font-size: 13px;
             }
+
             .check {
                 position: absolute;
                 user-select: none;
@@ -545,6 +600,7 @@ export default defineComponent({
                 left: 15px;
                 top: 20px;
                 box-sizing: border-box;
+
                 .check-disabled {
                     position: absolute;
                     top: 0;
@@ -555,6 +611,7 @@ export default defineComponent({
                     height: 40px;
                     cursor: not-allowed;
                 }
+
                 .check-circle {
                     cursor: pointer;
                     width: 34px;
@@ -566,20 +623,25 @@ export default defineComponent({
                     font-size: 23px;
                     text-align: center;
                     transition: all 0.3s;
+
                     :global(.dark) & {
                         opacity: 0.6;
                     }
+
                     &.checked {
                         color: var(--c-white);
                         background: var(--c-theme);
                         border-color: var(--c-theme);
+
                         :global(.dark) & {
                             opacity: 0.9;
                         }
                     }
+
                     &:hover {
                         border-color: var(--c-theme);
                     }
+
                     &.checked:hover {
                         border-color: #0079cc;
                         background: #0079cc;
@@ -589,53 +651,65 @@ export default defineComponent({
         }
     }
 }
+
 :global(.m) .achievement-item {
     :global {
         .ntxt {
             max-width: calc(100% - 120px);
             font-size: 15px;
         }
+
         .single {
             .detail {
                 padding-left: 10px;
             }
+
             small {
                 max-width: calc(100% - 60px);
                 font-size: 12px;
+
                 a {
                     width: 45px;
                     margin-right: 1px;
                 }
             }
         }
+
         .check {
             left: 10px;
         }
+
         .middle {
             margin-left: 40px;
         }
+
         .award {
             width: 45px;
             margin-right: 5px;
+
             img {
                 width: 15px;
                 height: 15px;
                 padding-top: 5px;
             }
         }
+
         .right {
             min-width: 65px;
             position: absolute;
             right: 10px;
+
             input {
                 width: 65px;
                 font-size: 12px;
             }
+
             .status-in,
             .status-out {
                 &.status-in {
                     padding-right: 8px;
                 }
+
                 font-size: 15px;
 
                 & > div {
@@ -644,12 +718,14 @@ export default defineComponent({
                     font-size: 13px;
                     vertical-align: bottom;
                 }
+
                 input {
                     font-size: 15px;
                     height: 17px;
                     width: 100%;
                     padding-right: 1px;
                 }
+
                 .sep {
                     padding: 0;
                 }
