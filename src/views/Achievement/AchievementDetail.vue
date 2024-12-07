@@ -8,12 +8,7 @@
         @closed="$emit('close')"
     >
         <div :class="$style.trigger">
-            <a
-                class="el-link el-link--info is-underline trigger-id"
-                target="_blank"
-                rel="nofollow"
-                :href="`https://genshin.honeyhunterworld.com/a_${achievement?.id || 0}/?lang=CHS`"
-            >
+            <a class="el-link el-link--info is-underline trigger-id" target="_blank" rel="nofollow">
                 <span class="el-link--inner"> ID: {{ achievement?.id }} </span>
             </a>
             <div class="trigger-type">
@@ -29,12 +24,7 @@
                         {{ taskType[j] || j }}
                     </span>
                     <span class="name">
-                        <a
-                            class="el-link el-link--default is-underline"
-                            target="_blank"
-                            rel="nofollow"
-                            :href="`https://genshin.honeyhunterworld.com/q_${i.questId}/?lang=CHS`"
-                        >
+                        <a class="el-link el-link--default is-underline" target="_blank" rel="nofollow">
                             <span class="el-link--inner"> {{ amos[i.name] }} </span>
                         </a>
                     </span>

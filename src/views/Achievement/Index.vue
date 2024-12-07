@@ -8,14 +8,14 @@
                         <template #content>
                             <div style="text-align: center">
                                 剩余 {{ totalCount - totalFin.count }} 个成就 <br />
-                                可获取 {{ totalReward - totalFin.reward }} 原石
+                                可获取 {{ totalReward - totalFin.reward }} 星琼
                             </div>
                         </template>
                         <small :class="$style.totalPercent">
                             <div class="count">{{ totalFin.count }} / {{ totalCount }}</div>
                             <div class="reward">
                                 {{ totalFin.reward }} / {{ totalReward }}
-                                <img :src="img('yuanshi')" alt="原石" />
+                                <img :src="img('xinqiong')" alt="星琼" />
                             </div>
                         </small>
                     </el-tooltip>
@@ -53,7 +53,7 @@
                         <export-dropdown />
                     </div>
                 </div>
-                <div class="a-line">
+                <!-- <div class="a-line">
                     <div v-if="isWindows && !showScanner" class="dropdown">
                         <el-dropdown class="header-export-dropdown" split-button @click="showScanner = !showScanner">
                             <fa-icon icon="crosshairs" /> {{ showScanner ? '退出' : '' }}识别
@@ -83,10 +83,10 @@
                     >
                         <fa-icon icon="crosshairs" /> {{ showScanner ? '退出' : '' }}识别
                     </el-button>
-                </div>
+                </div> -->
             </div>
         </template>
-        <scanner-dialog v-model:showScanner="showScanner" />
+        <!-- <scanner-dialog v-model:showScanner="showScanner" /> -->
         <el-dialog v-model="showImport" title="导入" :class="$style.importDialog" destroy-on-close>
             <import-dialog :memo-id="autoImportId" @close="closeImport" />
         </el-dialog>
@@ -147,7 +147,7 @@
                                         ></el-option>
                                     </template>
                                 </el-select>
-                                <el-select
+                                <!-- <el-select
                                     v-model="statusQuest"
                                     multiple
                                     clearable
@@ -159,7 +159,7 @@
                                     <el-option value="WQ" label="世界任务"></el-option>
                                     <el-option value="IQ" label="每日委托"></el-option>
                                     <el-option value="AQ" label="魔神任务"></el-option>
-                                </el-select>
+                                </el-select> -->
                                 <div class="chk">
                                     <el-checkbox v-model="sortByStatus" label="未完成优先" size="large" />
                                 </div>
@@ -292,7 +292,7 @@ import AchievementSidebar from './AchievementSidebar.vue'
 import AchievementDetail from './AchievementDetail.vue'
 import ExportDropdown from './ExportDropdown.vue'
 import ImportDialog from './ImportDialog.vue'
-import ScannerDialog from './ScannerDialog.vue'
+// import ScannerDialog from './ScannerDialog.vue'
 import versionMap, { allVersions, versionDateMap } from './versionMap'
 import { badgeTypeMap } from './badgeMap'
 import bus from '@/bus'
@@ -310,7 +310,7 @@ export default defineComponent({
         AchievementDetail,
         ImportDialog,
         ExportDropdown,
-        ScannerDialog,
+        // ScannerDialog,
         DynamicScroller,
         DynamicScrollerItem,
     },
@@ -410,6 +410,7 @@ export default defineComponent({
         const achievementCat = computed(() => {
             const ach = achevementsAmos
                 .map((e) => {
+                    console.log('e', e)
                     if (publishedInfo.value.latestPublishedVersion === 999) {
                         return e
                     } else {
@@ -453,7 +454,7 @@ export default defineComponent({
             }, 0)
         })
         const route = useRoute()
-        const DEFAULTCAT = 'wonders-of-the-world'
+        const DEFAULTCAT = 'i-trailblazer'
         const ALLCAT = 'all'
         const currentCatId = computed(() => {
             return route.params.cat || DEFAULTCAT

@@ -18,7 +18,7 @@
                         </div>
                         <small>
                             <b>
-                                <img :src="img('yuanshi')" alt="原石" />
+                                <img :src="img('xinqiong')" alt="星琼" />
                                 {{
                                     i.key === ALLCAT
                                         ? totalFin?.reward || 0
@@ -67,7 +67,7 @@ import type { ElScrollbar } from 'element-plus'
 export default defineComponent({
     props: ['achievementCat', 'achievementFinStat', 'hideFinished', 'totalFin'],
     setup() {
-        const DEFAULTCAT = 'wonders-of-the-world'
+        const DEFAULTCAT = 'i-trailblazer'
         const ALLCAT = 'all'
 
         const scrollbarRef = ref<InstanceType<typeof ElScrollbar> | null>(null)

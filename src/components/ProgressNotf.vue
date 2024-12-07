@@ -31,7 +31,7 @@ export default defineComponent({
     background: #eee;
     :global(.bar-in) {
         height: 100%;
-        background: #409eff;
+        background: #8491e9;
         transition: all 0.3s;
     }
 }

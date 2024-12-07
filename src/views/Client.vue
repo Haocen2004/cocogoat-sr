@@ -20,7 +20,7 @@
                     您可在控制面板或设置中随时卸载
                 </div>
             </div>
-            <div v-if="options.showads">
+            <!-- <div v-if="options.showads">
                 <div :class="$style.card" class="plz-card">
                     <div ref="ad" class="ad module"></div>
                     <div v-if="please" class="please">
@@ -38,7 +38,7 @@
                     >
                     </Adsense>
                 </div>
-            </div>
+            </div> -->
         </div>
     </Layout>
 </template>

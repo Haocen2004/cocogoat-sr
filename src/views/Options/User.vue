@@ -66,7 +66,7 @@
                                 <img :src="characterIcon(edit.avatar)" />
                             </div>
                         </template>
-                        <el-option
+                        <!-- <el-option
                             v-for="i in characterAmos"
                             :key="i.key"
                             :value="i.key"
@@ -75,7 +75,7 @@
                         >
                             <img :src="characterIcon(i.key)" />
                             <span class="sel-uname">{{ i18n.amos[i.name] }}</span>
-                        </el-option>
+                        </el-option> -->
                     </el-select>
                 </el-form-item>
             </el-form>
@@ -93,7 +93,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlus, faPenToSquare, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { del, get, set } from '@/store/impl'
 import { characterIcon } from '@/assets/mihoyoImages/characterIcon'
-import characterAmos from '@/generated/amos-data/amos/characters'
+// import characterAmos from '@/generated/amos-data/amos/characters'
 library.add(faPlus, faPenToSquare, faTrashCan)
 type Unpacked<T> = T extends (infer U)[] ? U : T
 export default defineComponent({
@@ -201,7 +201,7 @@ export default defineComponent({
             delUser,
             edit,
             saveForm,
-            characterAmos,
+            // characterAmos,
         }
     },
 })

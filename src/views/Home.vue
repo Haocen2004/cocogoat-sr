@@ -1,29 +1,39 @@
 <template>
     <Layout :class="$style.home">
-        <template #title><span style="font-family: genshin">椰羊 · 首页</span></template>
+        <template #title><span style="font-family: genshin">椰羊SR · 首页</span></template>
         <div :class="$style.root">
             <h1 :class="$style.title">
-                椰羊 cocogoat
-                <small>纯网页圣遗物管理·成就扫描·更多功能开发中</small>
+                椰羊 cocogoat-sr
+                <small>椰羊星穹铁道分羊·更多功能开发中</small>
             </h1>
-            <div v-if="apistatus" :class="$style.apistatus">
-                <el-alert type="warning" :title="apistatus" show-icon :closable="false" />
+            <div :class="$style.apistatus">
+                <el-alert
+                    type="warning"
+                    title="本项目为 非官方 二次创作 项目，仅因为 herta.space 停更而临时使用"
+                    show-icon
+                    :closable="false"
+                />
             </div>
             <div>
                 <div :class="$style.card">
                     <div class="card-title">额外工具</div>
                     <div class="card-body">
-                        <router-link :class="$style.extraOne" style="color: #0079cc" :to="{ name: 'installer.index' }">
+                        <a
+                            :class="$style.extraOne"
+                            style="color: #0079cc"
+                            href="https://cocogoat.work/extra/installer"
+                            target="_blank"
+                        >
                             <div class="circle">
                                 <div class="img" style="border-color: #0079cc">
-                                    <fa-icon icon="box-open" />
+                                    <fa-icon icon="file-zipper" />
                                 </div>
                                 <div class="svg-w" style="background: #0079cc">
                                     <icon-cocogoat style="fill: #fff" />
                                 </div>
                             </div>
                             <div class="text">PC 端<br />更新包列表</div>
-                        </router-link>
+                        </a>
                         <a
                             :class="$style.extraOne"
                             style="color: #ef930b"
@@ -40,8 +50,7 @@
                             </div>
                             <div class="text">WebStatic<br />Extractor</div>
                         </a>
-
-                        <router-link :class="$style.extraOne" style="color: #009892" :to="{ name: 'zhiqiong' }">
+                        <!-- <router-link :class="$style.extraOne" style="color: #009892" :to="{ name: 'zhiqiong' }">
                             <div class="circle">
                                 <div class="img" style="border-color: #009892">
                                     <fa-icon icon="map-location-dot" />
@@ -67,11 +76,11 @@
                                 </div>
                             </div>
                             <div class="text">OpenCV.js<br />Playground</div>
-                        </router-link>
+                        </router-link> -->
                     </div>
                 </div>
             </div>
-            <div v-if="options.showads">
+            <!-- <div v-if="options.showads">
                 <div :class="$style.card" class="plz-card">
                     <div ref="ad" class="ad module"></div>
                     <div v-if="please" class="please">
@@ -89,19 +98,19 @@
                     >
                     </Adsense>
                 </div>
-            </div>
+            </div> -->
             <div :class="$style.cardList">
                 <a :class="$style.card" href="https://github.com/YuehaiTeam/cocogoat" target="_blank">
                     <fa-icon :icon="['fab', 'github-alt']" />
                     <h4>开源地址</h4>
                     <div>本工具已在 GitHub 以 BSD-3 协议完全开源，可任意修改使用</div>
                 </a>
-                <a :class="$style.card" href="https://github.com/YuehaiTeam/cocogoat/tree/main/docs" target="_blank">
+                <!-- <a :class="$style.card" href="https://github.com/YuehaiTeam/cocogoat/tree/main/docs" target="_blank">
                     <fa-icon icon="infinity" />
                     <h4>接入文档</h4>
                     <div>本工具中各类扫描器组件均提供接口，可以嵌入到任何项目中</div>
-                </a>
-                <a
+                </a> -->
+                <!-- <a
                     :class="$style.card"
                     href="https://github.com/YuehaiTeam/cocogoat/actions/workflows/build-singlefile.yml"
                     target="_blank"
@@ -109,19 +118,19 @@
                     <fa-icon icon="folder-tree" />
                     <h4>本地使用</h4>
                     <div>如需离线使用，请点这里下载本地专用版</div>
-                </a>
+                </a> -->
                 <a :class="$style.card" href="https://github.com/YuehaiTeam/cocogoat/issues" target="_blank">
                     <fa-icon :icon="['far', 'circle-dot']" />
                     <h4>功能反馈</h4>
                     <div>无论遇到问题还是请求新功能，都可以前往 GitHub Issues 反馈</div>
                 </a>
-                <a :class="$style.card" href="https://github.com/YuehaiTeam/cocogoat/discussions" target="_blank">
+                <!-- <a :class="$style.card" href="https://github.com/YuehaiTeam/cocogoat/discussions" target="_blank">
                     <fa-icon icon="message" />
                     <h4>社区交流</h4>
                     <div>前往 GitHub Discussions 进行聊天吹水和其他非正式讨论</div>
-                </a>
+                </a> -->
             </div>
-            <div :class="$style.copyright">&copy;2022-2024 YuehaiTeam cocogoat.work <build-info /></div>
+            <div :class="$style.copyright">&copy;2022-2024 YuehaiTeam | Hao_cen <build-info /></div>
         </div>
     </Layout>
 </template>

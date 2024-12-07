@@ -22,30 +22,34 @@
                     </div>
                 </div>
             </el-form-item>
-            <el-form-item label="错误报告和统计">
+            <!-- <el-form-item label="错误报告和统计">
                 <div class="form-content">
                     <div class="select">
                         <el-switch v-model="options.reporting"></el-switch>
                     </div>
                     <div class="desc">关闭后刷新页面生效。</div>
                 </div>
-            </el-form-item>
-            <el-form-item label="展示广告">
+            </el-form-item> -->
+            <!-- <el-form-item label="展示广告">
                 <div class="form-content">
                     <div class="select">
                         <el-switch v-model="options.showads"></el-switch>
                     </div>
                     <div class="desc">仅在首页出现的广告不会影响浏览，希望您能支持我们。</div>
                 </div>
-            </el-form-item>
+            </el-form-item> -->
         </el-form>
         <h4>关于</h4>
         <section class="about">
-            <div class="logo"><icon-cocogoat /> 椰羊 cocogoat</div>
-            <div class="copyright">&copy;2022-2024 YuehaiTeam <build-info /></div>
-            <div v-if="options.reporting" class="logreport">
-                <el-link @click="report">上传日志</el-link>
+            <div class="logo"><icon-cocogoat /> 椰羊 cocogoat-sr</div>
+            <div class="copyright">
+                &copy;2022-2024 <br />
+                YuehaiTeam | Hao_cen<br />
+                <build-info />
             </div>
+            <!-- <div v-if="options.reporting" class="logreport">
+                <el-link @click="report">上传日志</el-link>
+            </div> -->
         </section>
     </section>
 </template>
@@ -64,15 +68,15 @@ export default {
         BuildInfo,
     },
     setup() {
-        const report = async () => {
-            const reporting = await import('@/utils/reporting')
-            reporting.report()
-        }
+        // const report = async () => {
+        //     const reporting = await import('@/utils/reporting')
+        //     reporting.report()
+        // }
         return {
             isMobile: toRef(bus(), 'isMobile'),
             langNames,
             options,
-            report,
+            // report,
             configuredMode,
         }
     },

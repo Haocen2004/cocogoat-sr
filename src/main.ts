@@ -1,8 +1,8 @@
 import { App as TypeApp, createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import resources, { setResourcesAndUpdateInfo } from './resources'
-import { defaultResources } from './resource-main'
+// import resources, { setResourcesAndUpdateInfo } from './resources'
+// import { defaultResources } from './resource-main'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import View from '@/views/View.vue'
 import { store, currentUser, options } from './store'
@@ -11,18 +11,18 @@ import { createPinia } from 'pinia'
 import ScriptX from 'vue-scriptx'
 import '@/utils/darkmode'
 import { i18n, initi18n } from '@/i18n'
-import Adsense from 'vue-google-adsense/dist/Adsense.min.js'
+// import Adsense from 'vue-google-adsense/dist/Adsense.min.js'
 
 import type { CocogoatGlobal } from '@/typings/global'
 
 /// #if !SINGLEFILE
-import { loadSW } from '@/utils/serviceWorkerEntrance'
+// import { loadSW } from '@/utils/serviceWorkerEntrance'
 /// #endif
 
 const app = createApp(App)
 app.use(createPinia())
 app.use(ScriptX)
-app.use(Adsense)
+// app.use(Adsense)
 
 // 兼容性检查：
 export let notInSameoriginFrame = parent === window
@@ -36,23 +36,23 @@ if (!notInSameoriginFrame) {
     }
 }
 
-setResourcesAndUpdateInfo(defaultResources)
+// setResourcesAndUpdateInfo(defaultResources)
 declare global {
     interface Window {
         $cocogoat: CocogoatGlobal<TypeApp>
         dataLayer: unknown[]
         gtag: (...args: unknown[]) => void
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        initGeetest4: (...args: unknown[]) => any
+        // initGeetest4: (...args: unknown[]) => any
     }
 }
 
 ;(async () => {
     await initi18n()
-    if (options.value.reporting && process.env.NODE_ENV === 'production' && process.env.VUE_APP_TEST !== 'true') {
-        const { init } = await import('@/utils/reporting')
-        init(app, router)
-    }
+    // if (options.value.reporting && process.env.NODE_ENV === 'production' && process.env.VUE_APP_TEST !== 'true') {
+    //     const { init } = await import('@/utils/reporting')
+    //     init(app, router)
+    // }
     app.component('FaIcon', FontAwesomeIcon).component('Layout', View).use(router).mount('#toki')
     if (top === window && !location.href.includes('/frames')) {
         // Don't sync in iframes
@@ -70,14 +70,14 @@ declare global {
         store,
         i18n,
         options,
-        resources,
+        // resources,
         currentUser,
     } as (typeof window)['$cocogoat']
     Object.assign(c, window.$cocogoat)
     window.$cocogoat = c
     window.$cocogoat.onload && window.$cocogoat.onload()
     /// #if !SINGLEFILE
-    window.$cocogoat.sw = loadSW()
+    // window.$cocogoat.sw = loadSW()
     /// #endif
     if (window.$cocogoat.entrance) {
         const indexJsonUrl = window.$cocogoat.entrance

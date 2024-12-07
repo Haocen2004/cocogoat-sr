@@ -110,9 +110,6 @@ dependencies:
   vue-demi:
     specifier: ^0.14.7
     version: 0.14.7(vue@3.4.25)
-  vue-google-adsense:
-    specifier: ^2.0.0
-    version: 2.0.0(vue-scriptx@0.2.5)(vue@3.4.25)
   vue-monaco:
     specifier: ^1.2.2
     version: 1.2.2
@@ -10029,16 +10026,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  /vue-google-adsense@2.0.0(vue-scriptx@0.2.5)(vue@3.4.25):
-    resolution: {integrity: sha512-/Lds405KZEufu8VKjmxubu22qRQsr073MKmZuefC9ABs3ArvTZCWfqFMyG2xNjeFOHHr4vrngXUrNhuT8Zi9lw==}
-    peerDependencies:
-      vue: ^3.0.0
-      vue-scriptx: ^0.2.5
-    dependencies:
-      vue: 3.4.25(typescript@5.4.5)
-      vue-scriptx: 0.2.5
-    dev: false
 
   /vue-hot-reload-api@2.3.4:
     resolution: {integrity: sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==}

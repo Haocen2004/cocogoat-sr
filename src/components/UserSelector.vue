@@ -35,9 +35,9 @@ export default defineComponent({
                 case 'more':
                     router.push('/options/user')
                     break
-                case 'cloud':
-                    router.push('/options/sync')
-                    break
+                // case 'cloud':
+                //     router.push('/options/sync')
+                //     break
             }
         }
         const syncStatusText = {
@@ -109,7 +109,7 @@ export default defineComponent({
                         </div>
                     </el-dropdown-item>
                     <el-dropdown-item v-if="!hideMore" divided :command="['more']">账号管理</el-dropdown-item>
-                    <el-dropdown-item v-if="!hideMore" divided :command="['cloud']">
+                    <!-- <el-dropdown-item v-if="!hideMore" divided :command="['cloud']">
                         <div :class="$style.userInfo">
                             <div :class="[$style.syncIcon, syncStatus.status, 'menu-sync-icon']">
                                 <fa-icon :icon="syncIcon[syncStatus.status]" />
@@ -119,7 +119,7 @@ export default defineComponent({
                                 <span class="user-id">{{ syncStatusText[syncStatus.status] }}</span>
                             </span>
                         </div>
-                    </el-dropdown-item>
+                    </el-dropdown-item> -->
                 </el-dropdown-menu>
             </template>
         </el-dropdown>

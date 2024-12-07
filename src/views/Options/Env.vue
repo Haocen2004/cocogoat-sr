@@ -82,10 +82,10 @@ export default {
     setup() {
         const sw = window.$cocogoat.sw
         const hasSw = !!sw?.sw
-        const report = async () => {
-            const reporting = await import('@/utils/reporting')
-            reporting.report()
-        }
+        // const report = async () => {
+        //     const reporting = await import('@/utils/reporting')
+        //     reporting.report()
+        // }
         const installData = async () => {
             sw.cacheAll(true)
         }
@@ -114,7 +114,7 @@ export default {
         return {
             langNames,
             options,
-            report,
+            // report,
             configuredMode,
             comp,
             UA: navigator.userAgent,

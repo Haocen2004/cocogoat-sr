@@ -22,6 +22,6 @@
         },
         "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx"],
+    "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx", "src/views/Zhiqiong.vue.disable"],
     "exclude": ["node_modules", "src/plugins/genshin-data/**"]
 }

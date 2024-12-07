@@ -348,7 +348,7 @@ async function dumpToExcel() {
         { header: 'ID', key: 'id' },
         { header: '分类', key: 'category' },
         { header: '名称', key: 'name' },
-        { header: '原石', key: 'reward' },
+        { header: '星琼', key: 'reward' },
         { header: '描述', key: 'desc' },
         { header: '状态', key: 'status' },
         { header: '进度', key: 'current' },

@@ -1,4 +1,0 @@
-[submodule "src/generated/amos-data"]
-	path = src/generated/amos-data
-	url = https://github.com/YuehaiTeam/amos-data.git
-	branch = main

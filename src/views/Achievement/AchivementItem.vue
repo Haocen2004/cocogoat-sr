@@ -15,7 +15,7 @@
                 <div class="middle">
                     <div class="name">
                         <div class="award" :class="{ checked: isFin }">
-                            <img :src="img('yuanshi')" alt="原石" />
+                            <img :src="img('xinqiong')" alt="星琼" />
                             <span class="number">{{ i.reward }}</span>
                         </div>
                         <div class="ntxt" @click="$emit('click-title')">
@@ -125,7 +125,7 @@ export default defineComponent({
     emits: ['input-date', 'input-current', 'input-partial', 'check', 'click-title'],
     setup(props, { emit }) {
         const searchMys = (i: Achievement) => {
-            return `https://www.miyoushe.com/ys/search?keyword=${encodeURIComponent(i18n.amos[i.name])}`
+            return `https://www.miyoushe.com/sr/search?keyword=${encodeURIComponent(i18n.amos[i.name])}`
         }
         return {
             img,

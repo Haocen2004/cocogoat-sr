@@ -1,5 +1,5 @@
 import { IAchievementStore } from '@/typings/Achievement'
-import { IArtifact } from '@/typings/Artifact'
+// import { IArtifact } from '@/typings/Artifact'
 import { currentUser as storageCurrentUser, get, set, list } from './impl'
 import { Ref, ref, watch } from 'vue'
 import { runMigrate } from './migrate'
@@ -12,7 +12,7 @@ export function createEmptyStore() {
         achievements: [] as IAchievementStore[],
         achievement2: {} as Record<number, AchievementItem>,
         achievementVersion: 2,
-        artifacts: [] as IArtifact[],
+        // artifacts: [] as IArtifact[],
         user: {
             name: '默认',
             avatar: 'traveler',
@@ -25,8 +25,8 @@ export function createEmptyOptions() {
         lang: navigator.language.toLowerCase(),
         achievements_recent_export: 'excel',
         achievements_show_unpublished: false,
-        reporting: true,
-        showads: true,
+        // reporting: false,
+        // showads: false,
     }
 }
 export type IOptions = ReturnType<typeof createEmptyOptions>

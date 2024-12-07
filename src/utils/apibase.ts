@@ -19,27 +19,29 @@ export const apibase = async (path = '', region = 'default') => {
     return apis[region === 'default' ? apiregion : region] + path
 }
 export const checkRegion = async (apiregion: string) => {
+    console.log(apiregion)
     if (window.$cocogoat.status && window.$cocogoat.region) {
         apistatus.value = window.$cocogoat.status.msg
         apicolor.value = window.$cocogoat.status.typ
         syncstatus.value = window.$cocogoat.status.smsg
         return window.$cocogoat.region
     }
-    const url = (await apis[apiregion]) + '/status'
-    try {
-        const res = await fetch(url)
-        if (res.ok) {
-            const rjson = await res.json()
-            apistatus.value = rjson.msg
-            apicolor.value = rjson.typ
-            syncstatus.value = rjson.smsg
-            if (apis[rjson.region]) {
-                return rjson.region
-            }
-        }
-    } catch (e) {
-        console.error('API Region Probe Faild', e)
-        return apiregion === 'global' ? 'cn' : 'global'
-    }
-    return apiregion
+    return 'cn'
+    // const url = (await apis[apiregion]) + '/status'
+    // try {
+    //     const res = await fetch(url)
+    //     if (res.ok) {
+    //         const rjson = await res.json()
+    //         // apistatus.value = rjson.msg
+    //         // apicolor.value = rjson.typ
+    //         // syncstatus.value = rjson.smsg
+    //         if (apis[rjson.region]) {
+    //             return rjson.region
+    //         }
+    //     }
+    // } catch (e) {
+    //     console.error('API Region Probe Faild', e)
+    //     return apiregion === 'global' ? 'cn' : 'global'
+    // }
+    // return apiregion
 }

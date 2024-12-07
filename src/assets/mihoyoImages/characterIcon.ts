@@ -66,7 +66,7 @@ const mapping = {
     kamisato_ayato: 'Ayato',
 } as Record<string, string>
 export const template =
-    'https://upload-bbs.mihoyo.com/game_record/genshin/character_icon/UI_AvatarIcon_#.png?x-oss-process=image/crop,w_200,h_200,y_5,g_north'
+    'https://uploadstatic.mihoyo.com/darkmatter/hkrpg/prod_gf_cn/item_icon_745c4j/c5dbbc68151c80181e8cf8180130d5ea.png?x-oss-process=image/crop,w_100,h_100,y_2,g_north'
 export const characterIcon = (name: string) => {
     let n = ''
     if (mapping[name]) n = mapping[name]

@@ -1,6 +1,6 @@
 body {
-    --c-theme: #409eff;
-    --c-theme-sub: #007acc;
+    --c-theme: #8491e9;
+    --c-theme-sub: #616cb1;
     --c-white: #fff;
     --c-menu: #fff;
     --c-menu-active: #fff;
@@ -9,25 +9,25 @@ body {
     --c-text: #333;
     --c-text-mid: #666;
     --c-text-sub: #888;
-    --c-text-theme: #409eff;
-    --c-text-theme-sub: #007acc;
-    --el-box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+    --c-text-theme: #8491e9;
+    --c-text-theme-sub: #616cb1;
+    --el-box-shadow-base: 0 2px 4px rgba(0,0,0,.12),0 0 6px rgba(0,0,0,.04);
 }
 body.dark {
     color-scheme: dark;
-    --c-theme: #007acc;
-    --c-theme-sub: #1d252e;
+    --c-theme: #616cb1;
+    --c-theme-sub: #1f1d2e;
     --c-background: #141414;
     --c-border: #323232;
     --c-text: #c9d1d9;
     --c-text-mid: #888;
     --c-text-sub: #8b949e;
     --c-white: #202020;
-    --c-menu: #1d252e;
+    --c-menu: #201d2e;
     --c-menu-active: #1e3342;
-    --el-box-shadow-base: 0 2px 4px rgba(0, 0, 0, 0.22), 0 0 6px rgba(0, 0, 0, 0.14);
-    --c-text-theme: #409eff;
-    --c-text-theme-sub: #007acc;
+    --el-box-shadow-base: 0 2px 4px rgba(0,0,0,.22),0 0 6px rgba(0,0,0,.14);
+    --c-text-theme: #8491e9;
+    --c-text-theme-sub: #616cb1;
     color: var(--c-text);
     iframe {
         color-scheme: light;
