@@ -100,10 +100,15 @@
                 </div>
             </div> -->
             <div :class="$style.cardList">
-                <a :class="$style.card" href="https://github.com/YuehaiTeam/cocogoat" target="_blank">
+                <a :class="$style.card" href="https://github.com/HonkaiScanner/cocogoat-sr" target="_blank">
                     <fa-icon :icon="['fab', 'github-alt']" />
                     <h4>开源地址</h4>
                     <div>本工具已在 GitHub 以 BSD-3 协议完全开源，可任意修改使用</div>
+                </a>
+                <a :class="$style.card" href="https://github.com/YuehaiTeam/cocogoat" target="_blank">
+                    <fa-icon :icon="['fab', 'github-alt']" />
+                    <h4>原项目地址</h4>
+                    <div>椰羊本体</div>
                 </a>
                 <!-- <a :class="$style.card" href="https://github.com/YuehaiTeam/cocogoat/tree/main/docs" target="_blank">
                     <fa-icon icon="infinity" />
@@ -119,7 +124,7 @@
                     <h4>本地使用</h4>
                     <div>如需离线使用，请点这里下载本地专用版</div>
                 </a> -->
-                <a :class="$style.card" href="https://github.com/YuehaiTeam/cocogoat/issues" target="_blank">
+                <a :class="$style.card" href="https://github.com/HonkaiScanner/cocogoat-sr/issues" target="_blank">
                     <fa-icon :icon="['far', 'circle-dot']" />
                     <h4>功能反馈</h4>
                     <div>无论遇到问题还是请求新功能，都可以前往 GitHub Issues 反馈</div>
